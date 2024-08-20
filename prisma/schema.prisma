@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+model Patient {
+  mrn         String  @id
+  firstname   String
+  lastname    String
+  sex         String  // Enum not supported in sqlite but should be "male", "female" or "other"
+  dob         DateTime
+
+  generalPractitionerId     Int?
+  primaryCardiologistId     Int?
+  structuralCardiologistId  Int?
+
+  generalPractitioner     Doctor?  @relation("GPRelationship", fields: [generalPractitionerId], references: [id], onUpdate: Cascade, onDelete: SetNull)
+  primaryCardiologist     Doctor?  @relation("PCRelationship", fields: [primaryCardiologistId], references: [id], onUpdate: Cascade, onDelete: SetNull)
+  structuralCardiologist  Doctor?  @relation("SCRelationship", fields: [structuralCardiologistId], references: [id], onUpdate: Cascade, onDelete: SetNull)
+
+  conference    Conference[]
+}
+
+
+model Doctor {
+  id      Int   @id @default(autoincrement())
+  name    String
+  email   String?
+
+  patientsAsGP                      Patient[]  @relation("GPRelationship")
+  patientsAsPrimaryCardiologist     Patient[]  @relation("PCRelationship")
+  patientsAsStructuralCardiologist  Patient[]  @relation("SCRelationship")
+}
+
+
+model Conference {
+  id    Int   @id @default(autoincrement())
+  date  DateTime?
+  diagnosis   String
+  proposal    String
+
+  patientId   String
+
+  patient   Patient   @relation(fields: [patientId], references: [mrn])
+}
