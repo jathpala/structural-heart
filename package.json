@@ -23,6 +23,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@prisma/client": "^5.18.0"
+		"@prisma/client": "^5.18.0",
+		"bits-ui": "^0.21.13"
 	}
 }
