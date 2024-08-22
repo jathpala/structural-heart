@@ -29,10 +29,11 @@ header {
     align-items: baseline;
     padding-inline: 1rem;
     padding-block: 0.6rem;
-    box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 10px 2px adjust-color($muted-color, $alpha: -0.2);
 
     h1 {
-        font-family: "Josefin Sans", sans-serif;
+        color: $brand-color;
+        font-family: $brand-font;
         font-size: 1.6rem;
         font-weight: 400;
         font-style: italic;
@@ -42,6 +43,7 @@ header {
         ul {
             list-style: none;
             margin: 0;
+            color: $accent-color;
         }
     }
 }

@@ -1,6 +1,11 @@
 @use "reset";
 @use "theme" as *;
 
+body {
+    color: $text-color;
+    background-color: $background-color;
+}
+
 a {
     color: inherit;
     text-decoration: none;
