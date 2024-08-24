@@ -10,6 +10,7 @@
 	},
 	"devDependencies": {
 		"@iconify/json": "^2.2.239",
+		"@prisma/client": "^5.18.0",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
@@ -27,7 +28,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@prisma/client": "^5.18.0",
 		"bits-ui": "^0.21.13"
 	}
 }

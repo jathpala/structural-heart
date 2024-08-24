@@ -18,27 +18,31 @@ model Patient {
   sex         String  // Enum not supported in sqlite but should be "male", "female" or "other"
   dob         DateTime
 
-  generalPractitionerId     Int?
-  primaryCardiologistId     Int?
-  structuralCardiologistId  Int?
+  generalPractitionerName     String?
+  primaryCardiologistName     String?
+  structuralCardiologistName  String?
 
-  generalPractitioner     Doctor?  @relation("GPRelationship", fields: [generalPractitionerId], references: [id], onUpdate: Cascade, onDelete: SetNull)
-  primaryCardiologist     Doctor?  @relation("PCRelationship", fields: [primaryCardiologistId], references: [id], onUpdate: Cascade, onDelete: SetNull)
-  structuralCardiologist  Doctor?  @relation("SCRelationship", fields: [structuralCardiologistId], references: [id], onUpdate: Cascade, onDelete: SetNull)
+  // generalPractitionerId     Int?
+  // primaryCardiologistId     Int?
+  // structuralCardiologistId  Int?
+
+  // generalPractitioner     Doctor?  @relation("GPRelationship", fields: [generalPractitionerId], references: [id], onUpdate: Cascade, onDelete: SetNull)
+  // primaryCardiologist     Doctor?  @relation("PCRelationship", fields: [primaryCardiologistId], references: [id], onUpdate: Cascade, onDelete: SetNull)
+  // structuralCardiologist  Doctor?  @relation("SCRelationship", fields: [structuralCardiologistId], references: [id], onUpdate: Cascade, onDelete: SetNull)
 
   conference    Conference[]
 }
 
 
-model Doctor {
-  id      Int   @id @default(autoincrement())
-  name    String
-  email   String?
+// model Doctor {
+//   id      Int   @id @default(autoincrement())
+//   name    String
+//   email   String?
 
-  patientsAsGP                      Patient[]  @relation("GPRelationship")
-  patientsAsPrimaryCardiologist     Patient[]  @relation("PCRelationship")
-  patientsAsStructuralCardiologist  Patient[]  @relation("SCRelationship")
-}
+//   patientsAsGP                      Patient[]  @relation("GPRelationship")
+//   patientsAsPrimaryCardiologist     Patient[]  @relation("PCRelationship")
+//   patientsAsStructuralCardiologist  Patient[]  @relation("SCRelationship")
+// }
 
 
 model Conference {

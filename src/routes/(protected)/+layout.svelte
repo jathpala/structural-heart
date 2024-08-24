@@ -30,6 +30,7 @@ header {
     padding-inline: 1rem;
     padding-block: 0.6rem;
     box-shadow: 0px 2px 10px 2px adjust-color($muted-color, $alpha: -0.2);
+    margin-bottom: 2rem;
 
     h1 {
         color: $brand-color;
@@ -50,5 +51,6 @@ header {
 
 main {
     flex-grow: 1;
+    padding-inline: 2rem;
 }
 </style>
