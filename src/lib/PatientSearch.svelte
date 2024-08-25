@@ -1,5 +1,4 @@
 <script>
-import { v4 as uuidv4 } from "uuid"
 import _ from "lodash"
 import IconClose from "~icons/fe/close"
 import IconSearch from "~icons/fe/search"
@@ -10,7 +9,7 @@ export let placeholder = ""
 
 $: labelText = label ? label : _.startCase(name)
 
-const uuid = uuidv4()
+const uuid = crypto.randomUUID()
 const id = `${name}-${uuid}`
 </script>
 

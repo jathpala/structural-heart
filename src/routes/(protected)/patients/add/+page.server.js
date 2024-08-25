@@ -1,13 +1,24 @@
+import { redirect, fail } from "@sveltejs/kit"
 import prisma from "$lib/server/prisma"
 
 export const actions = {
     addPatient: async({ request }) => {
-        const { mrn, firstname, lastname, sex, dob } = Object.fromEntries(await request.formData())
+        const {
+            mrn,
+            firstname,
+            lastname,
+            sex,
+            dob
+        } = Object.fromEntries(await request.formData())
 
         try {
             await prisma.patient.create({
                 data: {
-                    mrn, firstname, lastname, sex, dob
+                    mrn,
+                    firstname,
+                    lastname,
+                    sex,
+                    dob
                 }
             })
         } catch (err) {
@@ -15,6 +26,6 @@ export const actions = {
             return fail(500, { message: "Unable to add patient" })
         }
 
-        return { status: 201 }
+        redirect(302, "/patients")
     }
 }
