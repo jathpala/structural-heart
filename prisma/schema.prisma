@@ -12,11 +12,12 @@ datasource db {
 
 
 model Patient {
+  @@map("patients")
   mrn         String  @id
   firstname   String
   lastname    String
   sex         String  // Enum not supported in sqlite but should be "male", "female" or "other"
-  dob         DateTime
+  dob         String
 
   generalPractitionerName     String?
   primaryCardiologistName     String?
@@ -46,6 +47,7 @@ model Patient {
 
 
 model Conference {
+  @@map("conferences")
   id    Int   @id @default(autoincrement())
   date  DateTime?
   diagnosis   String

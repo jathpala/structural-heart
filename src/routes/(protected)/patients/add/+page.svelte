@@ -1,6 +1,6 @@
 <h2>Add Patient</h2>
 
-<form>
+<form action="?/addPatient" method="POST">
     <label for="mrn">MRN</label>
     <input type="text" id="mrn" name="mrn" />
 
