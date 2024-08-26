@@ -1,0 +1,1 @@
+<h1>Clinical Details</h1>

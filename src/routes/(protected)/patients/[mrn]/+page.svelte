@@ -1,4 +1,6 @@
 <script>
+import { page } from "$app/stores"
+
 import PatientDetails from "$lib/PatientDetails.svelte"
 
 export let data
@@ -29,6 +31,8 @@ const {
     generalPractitioner={generalPractitionerName}
     primaryCardiologist={primaryCardiologistName}
     structuralCardiologist={structuralCardiologistName} />
+
+<a href={`${$page.url}/clinical`}>Clinical History</a>
 
 <style lang="scss">
 @use "$styles/theme" as *;

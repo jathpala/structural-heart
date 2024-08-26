@@ -20,6 +20,64 @@ model Patient {
   primaryCardiologistName     String?
   structuralCardiologistName  String?
 
+  height      Int?
+  weight      Int?
+
+  diagnosis     String?
+  summary       String?
+
+  history       String?
+  otherPastHistory   String?
+  medications   String?
+  allergies     String?
+
+  NYHA                    Int?
+  angina                  Boolean?
+  syncope                 Boolean?
+  heartFailureAdmission   Boolean?
+  orthopnea               Boolean?
+  PND                     Boolean?
+
+  heartFailure                      Boolean?
+  heartFailureDetails               String?
+  IHD                               Boolean?
+  IHDDetails                        String?
+  previousMI                        Boolean?
+  previousPCI                       Boolean?
+  PCIDetails                        String?
+  previousCardiacSurgery            String?
+  cardiacSurgeryDetails             String?
+  previousCABG                      Boolean?
+  previousSAVR                      Boolean?
+  previousStructuralIntervention    Boolean?
+  structuralInterventionDetails     String?
+  previousTAVI                      Boolean?
+  previousBAV                       Boolean?
+  AF                                Boolean?
+  AFDetails                         String?
+  implantableCardiacDevice          Boolean?
+  implantableCardiacDeviceDetails   String?
+  previousStrokeOrTIA               Boolean?
+  strokeAndTIADetails               String?
+  carotidArteryDisease              Boolean?
+  carotidArteryDiseaseDetails       String?
+  peripheralArteryDisease           Boolean?
+  peripheralArteryDiseaseDetails    String?
+  smoker                            String?  // Enum not supported in sqlite but should be "current", "recent", "former" or "never"
+  lungDisease                       Boolean?
+  lungDiseaseDetails                String?
+  hypertension                      Boolean?
+  diabetes                          String? // Enum not supported in sqlite but should be "no", "typeI" or "typeII"
+  chronicKidneyDisease              Boolean?
+  dialysis                          String? // Enum not supported in sqlite but should be "no", "peritoneal" or "haemo"
+
+  porcelainAorta      Boolean?
+  hostileChest        Boolean?
+  chestRadiotherapy   Boolean?
+  steroids            Boolean?
+
+
+
   // generalPractitionerId     Int?
   // primaryCardiologistId     Int?
   // structuralCardiologistId  Int?
