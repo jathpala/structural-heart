@@ -1,4 +1,5 @@
 <script>
+import { format as formatDate } from "date-fns"
 import PatientSearch from "$lib/PatientSearch.svelte"
 import IconGo from "~icons/fe/arrow-right"
 
@@ -31,7 +32,7 @@ $: ({ patients } = data)
                     <td>{patient.mrn}</td>
                     <td>{patient.firstname}</td>
                     <td>{patient.lastname}</td>
-                    <td>{patient.dob}</td>
+                    <td>{formatDate(new Date(patient.dob), "d / M / yyyy")}</td>
                     <td><a href={`/patients/${patient.mrn}`}><IconGo /></a></td>
                 </tr>
             {/each}
@@ -89,14 +90,14 @@ table {
         cursor: pointer;
 
         &:hover {
-            background-color: adjust-color($background-color, $lightness: -15%);
+            background-color: adjust-color($background-color, $lightness: -12%);
         }
 
         &:nth-child(2n) {
-            background-color: adjust-color($accent-color, $lightness: 50%, $saturation: -40%);
+            background-color: adjust-color($accent-color, $lightness: 32%, $saturation: -10%);
 
             &:hover {
-                background-color: adjust-color($accent-color, $lightness: 45%, $saturation: -40%);
+                background-color: adjust-color($accent-color, $lightness: 28%, $saturation: -10%);
             }
         }
     }
@@ -119,7 +120,7 @@ table {
         color: $background-color;
         font-weight: 600;
         font-style: italic;
-        background-color: adjust-color($accent-color, $lightness: 20%, $saturation: -30%);
+        background-color: adjust-color($accent-color, $lightness: 10%, $saturation: -5%);
     }
 }
 </style>

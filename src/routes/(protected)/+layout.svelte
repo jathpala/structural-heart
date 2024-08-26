@@ -29,7 +29,7 @@ header {
     align-items: baseline;
     padding-inline: 1rem;
     padding-block: 0.6rem;
-    box-shadow: 0px 2px 10px 2px adjust-color($muted-color, $alpha: -0.2);
+    box-shadow: 0px 2px 10px 1px adjust-color($muted-color, $alpha: -0.4);
     margin-bottom: 2rem;
 
     h1 {
@@ -48,6 +48,7 @@ header {
         ul {
             list-style: none;
             margin: 0;
+            font-weight: 600;
             color: $accent-color;
         }
     }

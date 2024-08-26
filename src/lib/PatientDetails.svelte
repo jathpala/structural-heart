@@ -12,39 +12,37 @@ export let structuralCardiologist = ""
 </script>
 
 <form action={action} method="POST">
-    <label for="mrn">MRN</label>
-    <input type="text" id="mrn" name="mrn" bind:value={mrn}/>
+    <fieldset class="demographics">
+        <label for="mrn">MRN</label>
+        <input type="text" id="mrn" name="mrn" bind:value={mrn}/>
 
-    <label for="firstname">First Name</label>
-    <input type="text" id="firstname" name="firstname" bind:value={firstname} />
+        <label for="firstname">First Name</label>
+        <input type="text" id="firstname" name="firstname" bind:value={firstname} />
 
-    <label for="lastname">Last Name</label>
-    <input type="text" id="lastname" name="lastname" bind:value={lastname} />
+        <label for="lastname">Last Name</label>
+        <input type="text" id="lastname" name="lastname" bind:value={lastname} />
 
-    <span class="spacer"></span><span class="spacer"></span>
+        <label for="sex">Sex</label>
+        <select id="sex" name="sex" bind:value={sex}>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
 
-    <label for="sex">Sex</label>
-    <select id="sex" name="sex" bind:value={sex}>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-    </select>
+        <label for="dob">DoB</label>
+        <input type="date" id="dob" name="dob" bind:value={dob} />
+    </fieldset>
 
-    <label for="dob">DoB</label>
-    <input type="date" id="dob" name="dob" bind:value={dob} />
+    <fieldset class="doctors">
+        <label for="general-practitioner">General Practitioner</label>
+        <input type="text" id="general-practitioner" name="generalPractitionerName" bind:value={generalPractitioner} />
 
-    <span class="spacer"></span><span class="spacer"></span>
+        <label for="primary-cardiologist">Primary Cardiologist</label>
+        <input type="text" id="primary-cardiologist" name="primaryCardiologistName" bind:value={primaryCardiologist} />
 
-    <label for="general-practitioner">General Practitioner</label>
-    <input type="text" id="general-practitioner" name="generalPractitionerName" bind:value={generalPractitioner} />
-
-    <label for="primary-cardiologist">Primary Cardiologist</label>
-    <input type="text" id="primary-cardiologist" name="primaryCardiologistName" bind:value={primaryCardiologist} />
-
-    <label for="structural-cardiologist">Structural Cardiologist</label>
-    <input type="text" id="structural-cardiologist" name="structuralCardiologistName" bind:value={structuralCardiologist} />
-
-    <span class="spacer"></span><span class="spacer"></span>
+        <label for="structural-cardiologist">Structural Cardiologist</label>
+        <input type="text" id="structural-cardiologist" name="structuralCardiologistName" bind:value={structuralCardiologist} />
+    </fieldset>
 
     <fieldset class="controls">
         <button type="reset">Reset</button>
@@ -55,13 +53,31 @@ export let structuralCardiologist = ""
 <style lang="scss">
 @use "$styles/theme" as *;
 
+
+// display: grid;
+//     grid-template-columns: max-content 1fr;
+//     column-gap: 1em;
+//     row-gap: 0.6em;
+//     align-items: center;
+//     width: fit-content;
 form {
     display: grid;
-    grid-template-columns: max-content 1fr;
-    column-gap: 1em;
-    row-gap: 0.6em;
-    align-items: center;
-    width: fit-content;
+    // flex-direction: column;
+    grid-template-columns: max-content max-content;
+    column-gap: 3em;
+    row-gap: 3em;
+    align-items: flex-start;
+    width: 100%;
+
+    fieldset {
+        border-style: none;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        column-gap: 1em;
+        row-gap: 0.8em;
+        align-items: center;
+        width: fit-content;
+    }
 
     label {
         text-align: right;

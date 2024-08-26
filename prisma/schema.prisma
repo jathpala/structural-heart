@@ -16,6 +16,8 @@ model Patient {
   sex         String  // Enum not supported in sqlite but should be "male", "female" or "other"
   dob         String
 
+  status      String // Enum not support in sqlite but should be "assess", "present", "waitlist", "monitor", "discharge"
+
   generalPractitionerName     String?
   primaryCardiologistName     String?
   structuralCardiologistName  String?
