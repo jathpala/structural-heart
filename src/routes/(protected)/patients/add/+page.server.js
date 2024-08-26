@@ -3,23 +3,11 @@ import prisma from "$lib/server/prisma"
 
 export const actions = {
     addPatient: async({ request }) => {
-        const {
-            mrn,
-            firstname,
-            lastname,
-            sex,
-            dob
-        } = Object.fromEntries(await request.formData())
+        const patient = Object.fromEntries(await request.formData())
 
         try {
             await prisma.patient.create({
-                data: {
-                    mrn,
-                    firstname,
-                    lastname,
-                    sex,
-                    dob
-                }
+                data: { ...patient }
             })
         } catch (err) {
             console.error(err)

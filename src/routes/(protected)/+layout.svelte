@@ -1,6 +1,6 @@
 <div id="page">
     <header>
-        <h1><a href="/home">Structural Heart</a></h1>
+        <h1><a href="/patients">Structural Heart</a></h1>
         <nav>
             <ul>
             </ul>
@@ -38,6 +38,10 @@ header {
         font-size: 1.6rem;
         font-weight: 400;
         font-style: italic;
+
+        a:hover {
+            text-decoration: none;
+        }
     }
 
     nav {
