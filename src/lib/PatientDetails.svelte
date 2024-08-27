@@ -9,6 +9,7 @@ export let dob = ""
 export let generalPractitioner = ""
 export let primaryCardiologist = ""
 export let structuralCardiologist = ""
+export let status = "assess"
 </script>
 
 <form action={action} method="POST">
@@ -22,6 +23,8 @@ export let structuralCardiologist = ""
         <label for="lastname">Last Name</label>
         <input type="text" id="lastname" name="lastname" bind:value={lastname} />
 
+        <span class="spacer"></span><span class="spacer"></span>
+
         <label for="sex">Sex</label>
         <select id="sex" name="sex" bind:value={sex}>
             <option value="male">Male</option>
@@ -33,7 +36,7 @@ export let structuralCardiologist = ""
         <input type="date" id="dob" name="dob" bind:value={dob} />
     </fieldset>
 
-    <fieldset class="doctors">
+    <fieldset class="treating-doctors">
         <label for="general-practitioner">General Practitioner</label>
         <input type="text" id="general-practitioner" name="generalPractitionerName" bind:value={generalPractitioner} />
 
@@ -42,6 +45,29 @@ export let structuralCardiologist = ""
 
         <label for="structural-cardiologist">Structural Cardiologist</label>
         <input type="text" id="structural-cardiologist" name="structuralCardiologistName" bind:value={structuralCardiologist} />
+    </fieldset>
+
+    <fieldset class="status">
+        <label>
+            <input type="radio" name="status" value="assess" bind:group={status} />
+            <span>Being Assessed</span>
+        </label>
+        <label>
+            <input type="radio" name="status" value="present" bind:group={status} />
+            <span>Awaiting Presentation</span>
+        </label>
+        <label>
+            <input type="radio" name="status" value="waitlist" bind:group={status} />
+            <span>On Waitlist</span>
+        </label>
+        <label>
+            <input type="radio" name="status" value="monitor" bind:group={status} />
+            <span>Ongoing Monitoring</span>
+        </label>
+        <label>
+            <input type="radio" name="status" value="discharge" bind:group={status} />
+            <span>Discharged</span>
+        </label>
     </fieldset>
 
     <fieldset class="controls">
@@ -53,21 +79,19 @@ export let structuralCardiologist = ""
 <style lang="scss">
 @use "$styles/theme" as *;
 
-
-// display: grid;
-//     grid-template-columns: max-content 1fr;
-//     column-gap: 1em;
-//     row-gap: 0.6em;
-//     align-items: center;
-//     width: fit-content;
 form {
+    // TODO: CSS subgrids for the form and fieldsets may allow cleaner alignment without needing spacers
     display: grid;
-    // flex-direction: column;
+    grid-template-areas:
+        "demographics treating-doctors"
+        "demographics status"
+        "controls controls";
     grid-template-columns: max-content max-content;
-    column-gap: 3em;
-    row-gap: 3em;
+    column-gap: 6em;
+    row-gap: 2em;
+    margin-inline: auto;
     align-items: flex-start;
-    width: 100%;
+    width: fit-content;
 
     fieldset {
         border-style: none;
@@ -77,6 +101,72 @@ form {
         row-gap: 0.8em;
         align-items: center;
         width: fit-content;
+
+        &.demographics {
+            grid-area: demographics;
+        }
+
+        &.treating-doctors {
+            grid-area: treating-doctors;
+        }
+
+        &.status {
+            grid-area: status;
+            grid-template-columns: max-content max-content;
+            grid-template-rows: max-content max-content max-content;
+            grid-auto-flow: column;
+            justify-self: center;
+
+            label {
+                display: flex;
+                align-items: center;
+                gap: 0.6em;
+                text-align: left;
+
+                &::after {
+                    content: none;
+                }
+
+                input {
+                    width: 1.4em;
+                    height: 1.4em;
+                    accent-color: adjust-color($accent-color, $lightness: -10%);
+                }
+            }
+        }
+
+        &.controls {
+            grid-area: controls;
+            justify-self: center;
+            display: flex;
+            gap: 0.6em;
+
+            button {
+                padding-inline: 0.6em;
+                padding-block: 0.4em;
+                border-style: solid;
+                border-color: $accent-color;
+                border-radius: 0.8em;
+                background-color: $background-color;
+                color: $accent-color;
+                cursor: pointer;
+
+                &:hover {
+                    color: adjust-color($accent-color, $lightness: 4%);
+                    border-color: adjust-color($accent-color, $lightness: 4%);
+                    background-color: adjust-color($background-color, $lightness: -2%);
+                }
+
+                &.primary {
+                    background-color: $accent-color;
+                    color: $background-color;
+
+                    &:hover {
+                        background-color: adjust-color($accent-color, $lightness: 4%);
+                    }
+                }
+            }
+        }
     }
 
     label {
@@ -117,41 +207,7 @@ form {
     }
 
     span.spacer {
-        height: 0.6em;
-    }
-
-    fieldset.controls {
-        grid-column: 1 / 3;
-        display: flex;
-        justify-content: flex-end;
-        gap: 0.6em;
-        border-style: none;
-
-        button {
-            padding-inline: 0.6em;
-            padding-block: 0.4em;
-            border-style: solid;
-            border-color: $accent-color;
-            border-radius: 0.8em;
-            background-color: $background-color;
-            color: $accent-color;
-            cursor: pointer;
-
-            &:hover {
-                color: adjust-color($accent-color, $lightness: 4%);
-                border-color: adjust-color($accent-color, $lightness: 4%);
-                background-color: adjust-color($background-color, $lightness: -2%);
-            }
-
-            &.primary {
-                background-color: $accent-color;
-                color: $background-color;
-
-                &:hover {
-                    background-color: adjust-color($accent-color, $lightness: 4%);
-                }
-            }
-        }
+        height: 0.8em;
     }
 }
 </style>
