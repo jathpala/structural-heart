@@ -1,13 +1,5 @@
-/*
-  Warnings:
-
-  - Added the required column `status` to the `patients` table without a default value. This is not possible if the table is not empty.
-
-*/
--- RedefineTables
-PRAGMA defer_foreign_keys=ON;
-PRAGMA foreign_keys=OFF;
-CREATE TABLE "new_patients" (
+-- CreateTable
+CREATE TABLE "patients" (
     "mrn" TEXT NOT NULL PRIMARY KEY,
     "firstname" TEXT NOT NULL,
     "lastname" TEXT NOT NULL,
@@ -21,8 +13,8 @@ CREATE TABLE "new_patients" (
     "weight" INTEGER,
     "diagnosis" TEXT,
     "summary" TEXT,
-    "history" TEXT,
-    "otherPastHistory" TEXT,
+    "clinicalHistory" TEXT,
+    "pastHistory" TEXT,
     "medications" TEXT,
     "allergies" TEXT,
     "NYHA" INTEGER,
@@ -68,8 +60,13 @@ CREATE TABLE "new_patients" (
     "chestRadiotherapy" BOOLEAN,
     "steroids" BOOLEAN
 );
-INSERT INTO "new_patients" ("dob", "firstname", "generalPractitionerName", "lastname", "mrn", "primaryCardiologistName", "sex", "structuralCardiologistName") SELECT "dob", "firstname", "generalPractitionerName", "lastname", "mrn", "primaryCardiologistName", "sex", "structuralCardiologistName" FROM "patients";
-DROP TABLE "patients";
-ALTER TABLE "new_patients" RENAME TO "patients";
-PRAGMA foreign_keys=ON;
-PRAGMA defer_foreign_keys=OFF;
+
+-- CreateTable
+CREATE TABLE "conferences" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "date" DATETIME,
+    "diagnosis" TEXT NOT NULL,
+    "proposal" TEXT NOT NULL,
+    "patientId" TEXT NOT NULL,
+    CONSTRAINT "conferences_patientId_fkey" FOREIGN KEY ("patientId") REFERENCES "patients" ("mrn") ON DELETE RESTRICT ON UPDATE CASCADE
+);

@@ -28,10 +28,10 @@ model Patient {
   diagnosis     String?
   summary       String?
 
-  history       String?
-  otherPastHistory   String?
-  medications   String?
-  allergies     String?
+  clinicalHistory    String?
+  pastHistory        String?
+  medications        String?
+  allergies          String?
 
   NYHA                    Int?
   angina                  Boolean?
