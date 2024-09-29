@@ -49,3 +49,6 @@ Discharged
   }
 }
 -----
+
+npx prisma db push
+npx prisma migrage dev

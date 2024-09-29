@@ -89,6 +89,7 @@ model Patient {
   // structuralCardiologist  Doctor?  @relation("SCRelationship", fields: [structuralCardiologistId], references: [id], onUpdate: Cascade, onDelete: SetNull)
 
   conference    Conference[]
+  workup        Workup?
 }
 
 
@@ -101,6 +102,14 @@ model Patient {
 //   patientsAsPrimaryCardiologist     Patient[]  @relation("PCRelationship")
 //   patientsAsStructuralCardiologist  Patient[]  @relation("SCRelationship")
 // }
+
+model Workup {
+  @@map("workups")
+  id  Int @id @default(autoincrement())
+  patientId String  @unique
+
+  patient   Patient   @relation(fields: [patientId], references: [mrn])
+}
 
 
 model Conference {
