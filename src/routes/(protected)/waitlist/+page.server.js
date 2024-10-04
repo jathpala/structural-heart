@@ -6,63 +6,73 @@ const mock_data = [
         mrn: "111222",
         firstname: "Jath",
         lastname: "Palasubramaniam",
-        procedure: ["tavi"],
+        procedures: ["tavr"],
         categery: 2,
+        date: "2024-10-12"
     },
     {
         mrn: "111232",
         firstname: "Dharshan",
         lastname: "Palasubramaniam",
-        procedure: ["tavi"],
-        category: 2
+        procedures: ["tavr"],
+        category: 2,
+        date: "2024-09-10"
     },
     {
         mrn: "111244",
         firstname: "Frank",
         lastname: "Oldfield",
-        procedure: ["tavi"],
-        category: 2
-    },        {
+        procedures: ["tavr"],
+        category: 2,
+        date: "2024-05-10"
+    },
+    {
         mrn: "121222",
         firstname: "Bill",
         lastname: "Maher",
-        procedure: ["tavi", "tmveer"],
-        category: 2
+        procedures: ["tavr", "tmveer"],
+        category: 2,
+        date: "2024-09-10"
     },
     {
         mrn: "17622",
         firstname: "Tommy",
         lastname: "Costanza",
-        procedure: ["tavi", "pfoc"],
-        category: 2
+        procedures: ["tavr", "pfoc"],
+        category: 2,
+        date: "2023-09-10"
     },
     {
         mrn: "41222",
         firstname: "Geroge",
         lastname: "Selpig",
-        procedure: ["pfoc"],
-        category: 2
+        procedures: ["pfoc"],
+        category: 2,
+        date: "2024-09-11"
     },
     {
         mrn: "1222",
         firstname: "Adam",
         lastname: "Herberts",
-        procedure: ["tavi"],
-        category: 1
+        procedures: ["tavr"],
+        category: 1,
+        date: "2024-09-10"
     },
     {
         mrn: "19222",
         firstname: "Joe",
         lastname: "Ocean",
-        procedure: ["bav"],
-        category: 2
+        procedures: ["bav"],
+        category: 2,
+        date: "2024-08-10"
     },
     {
         mrn: "111862",
         firstname: "Bill",
         lastname: "Bailey",
-        procedure: ["tavi"],
-        category: 3
+        procedures: ["tavr"],
+        category: 3,
+        date: "2024-09-14"
     },
 ]
 

@@ -90,6 +90,7 @@ model Patient {
 
   conference    Conference[]
   workup        Workup?
+  waitlist      Waitlist?
 }
 
 
@@ -109,6 +110,17 @@ model Workup {
   patientId String  @unique
 
   patient   Patient   @relation(fields: [patientId], references: [mrn])
+}
+
+model Waitlist {
+  @@map("waitlist")
+  id  Int @id @default(autoincrement())
+  patientId String  @unique
+  date  DateTime
+  procedures  String  // Array not supported by sqlite so will be space separated strings
+  category  String // Enum not supported by sqlite
+
+  patient   Patient   @relation(fields:[patientId], references: [mrn])
 }
 
 
