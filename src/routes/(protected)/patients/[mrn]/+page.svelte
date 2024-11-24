@@ -38,6 +38,7 @@ const {
     {status} />
 
 <div class="links">
+    <a href={`${$page.url.href}/workup`}>Workup</a>
     <a href={`${$page.url.href}/clinical`}>Clinical History <IconGo /></a>
     <a href={`${$page.url.href}/investigations`}>Investigations <IconGo /></a>
     <a href={`${$page.url.href}/conference`}>Conference Note <IconGo /></a>
